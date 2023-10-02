@@ -1,7 +1,7 @@
 import allure
 import pytest
 
-from base.env import Config
+from env import Config
 from base.feature import ScenarioTemplate
 from base.features import get_scenario
 
@@ -15,7 +15,6 @@ class BDD:
         for step in scenario.steps:
             with allure.step(step.name):
                 print(step.keyword)
-        pass
 
     def _set_allure(self, scenario: ScenarioTemplate):
         allure.dynamic.parent_suite(scenario.feature.name)

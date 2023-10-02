@@ -1,0 +1,88 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "核心服务"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "Generated server url"
+    }
+  ],
+  "tags": [
+    {
+      "name": "渠道管理",
+      "description": "用于渠道管理"
+    }
+  ],
+  "paths": {
+    "/channel/addChannel": {
+      "post": {
+        "tags": [
+          "渠道管理"
+        ],
+        "summary": "新增渠道",
+        "description": "用于新增渠道",
+        "operationId": "addChannel",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChannelRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChannelResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ChannelRequest": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "integer",
+            "description": "渠道状态",
+            "format": "int32",
+            "enum": [
+              1,
+              2
+            ]
+          },
+          "type": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      },
+      "ChannelResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "integer",
+            "description": "渠道状态",
+            "format": "int32",
+            "enum": [
+              1,
+              2
+            ]
+          }
+        }
+      }
+    }
+  }
+}

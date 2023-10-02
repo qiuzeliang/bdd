@@ -1,8 +1,6 @@
-from dataclasses import asdict
-
 import pytest
 
-from base.env import get_config, Config
+from env import get_config, Config
 
 
 def pytest_addoption(parser):
@@ -18,9 +16,9 @@ def config(request, metadata):
 
 
 def write_environment(config: Config, metadata: dict):
-    with open('./allure-results/environment.properties', 'wb') as f:
+    with open(f'{config.allure_dir}/environment.properties', 'wb') as f:
         kvs = {**config.to_dict(), **metadata}
         for key, value in kvs.items():
-            if key not in ['JAVA_HOME', 'Packages', 'Plugins']:
-                _bytes = (key+'='+value).encode('unicode_escape') + '\n'.encode('utf-8')
+            if key not in ['JAVA_HOME', 'Packages', 'Plugins', 'allure_dir']:
+                _bytes = (key + '=' + value).encode('unicode_escape') + '\n'.encode('utf-8')
                 f.write(_bytes)
