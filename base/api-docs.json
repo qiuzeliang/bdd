@@ -1,7 +1,8 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "核心服务"
+    "title": "核心服务",
+    "version": "1.0.0"
   },
   "servers": [
     {
@@ -38,7 +39,7 @@
           "200": {
             "description": "OK",
             "content": {
-              "*/*": {
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ChannelResponse"
                 }
