@@ -5,7 +5,6 @@ import os
 import shutil
 
 import pytest
-from openapi_parser import parse
 
 from env import get_config, configs
 
@@ -22,7 +21,6 @@ def fix_allure_results(path: str):
 
 
 if __name__ == '__main__':
-    specification = parse('D:\\bdd\\base\\api-docs.json')
     parser = argparse.ArgumentParser()
     parser.add_argument('--env', type=str, required=True, default='dev', choices=configs.keys())
     args = parser.parse_args()

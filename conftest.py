@@ -8,7 +8,7 @@ def pytest_addoption(parser):
 
 
 @pytest.fixture(scope='session')
-def config(request, metadata):
+def config(request, metadata) -> Config:
     env = request.config.getoption("--env")
     config = get_config(env)
     write_environment(config, metadata)
